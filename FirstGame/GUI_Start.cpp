@@ -21,9 +21,12 @@ using namespace std;
 #endif
 
 #include "Gui_Start.h"
+#include "Gui_Test.h"
+#include "MainGame.h"
+using namespace ImGui;
 
 
-int main_window_start() {
+int main_window_start(MainGame &game) {
 
     cout << "Start of main window\n";
 
@@ -47,14 +50,14 @@ int main_window_start() {
 
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    CreateContext();
+    ImGuiIO& io = GetIO(); (void)io;
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
     // Setup Dear ImGui style
-    ImGui::StyleColorsDark();
-    //ImGui::StyleColorsLight();
+    StyleColorsDark();
+    //StyleColorsLight();
 
     // Setup Platform/Renderer backends
     ImGui_ImplWin32_Init(hwnd);
@@ -69,7 +72,11 @@ int main_window_start() {
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     bool closeWindow = false;
+    auto tempTest = new Gui_Test();
     while (!closeWindow) {
+
+        game.Update();
+
         // Poll and handle messages (inputs, window resize, etc.)
 // See the WndProc() function below for our to dispatch events to the Win32 backend.
         MSG msg;
@@ -86,43 +93,45 @@ int main_window_start() {
         // Start the Dear ImGui frame
         ImGui_ImplDX12_NewFrame();
         ImGui_ImplWin32_NewFrame();
-        ImGui::NewFrame();
+        NewFrame();
 
+
+        tempTest->CreateStuff(game);
         //Testing this window
-        {
-            static float f = 0.0f;
-            static int counter = 0;
+        //{
+        //    static float f = 0.0f;
+        //    static int counter = 0;
 
-            ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+        //    Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
-            ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-            //ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-            ImGui::Checkbox("Another Window", &show_another_window);
+        //    Text("This is some useful text.");               // Display some text (you can use a format strings too)
+        //    //Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+        //    Checkbox("Another Window", &show_another_window);
 
-            ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-            ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+        //    SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+        //    ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
 
-            if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-                counter++;
-            ImGui::SameLine();
-            ImGui::Text("counter = %d", counter);
+        //    if (Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+        //        counter++;
+        //    SameLine();
+        //    Text("counter = %d", counter);
 
-            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-            ImGui::End();
-        }
+        //    Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / GetIO().Framerate, GetIO().Framerate);
+        //    End();
+        //}
 
-        // 3. Show another simple window.
-        if (show_another_window)
-        {
-            ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-            ImGui::Text("Hello from another window!");
-            if (ImGui::Button("Close Me"))
-                show_another_window = false;
-            ImGui::End();
-        }
+        //// 3. Show another simple window.
+        //if (show_another_window)
+        //{
+        //    Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+        //    Text("Hello from another window!");
+        //    if (Button("Close Me"))
+        //        show_another_window = false;
+        //    End();
+        //}
 
         // Rendering
-        ImGui::Render();
+        Render();
 
         FrameContext* frameCtx = WaitForNextFrameResources();
         UINT backBufferIdx = g_pSwapChain->GetCurrentBackBufferIndex();
@@ -143,7 +152,7 @@ int main_window_start() {
         g_pd3dCommandList->ClearRenderTargetView(g_mainRenderTargetDescriptor[backBufferIdx], clear_color_with_alpha, 0, NULL);
         g_pd3dCommandList->OMSetRenderTargets(1, &g_mainRenderTargetDescriptor[backBufferIdx], FALSE, NULL);
         g_pd3dCommandList->SetDescriptorHeaps(1, &g_pd3dSrvDescHeap);
-        ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), g_pd3dCommandList);
+        ImGui_ImplDX12_RenderDrawData(GetDrawData(), g_pd3dCommandList);
         barrier.Transition.StateBefore = D3D12_RESOURCE_STATE_RENDER_TARGET;
         barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_PRESENT;
         g_pd3dCommandList->ResourceBarrier(1, &barrier);
@@ -164,7 +173,7 @@ int main_window_start() {
     // Cleanup
     ImGui_ImplDX12_Shutdown();
     ImGui_ImplWin32_Shutdown();
-    ImGui::DestroyContext();
+    DestroyContext();
 
     CleanupDeviceD3D();
     ::DestroyWindow(hwnd);

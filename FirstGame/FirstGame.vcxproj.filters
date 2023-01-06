@@ -69,6 +69,9 @@
     <ClCompile Include="MainGame.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Gui_Test.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\TestProject2\TestProject2\imconfig.h">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="MainGame.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui_Test.h">
+      <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

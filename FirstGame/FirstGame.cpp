@@ -9,7 +9,7 @@
 
 using namespace std;
 
-bool showDemo = true;
+bool showDemo = false;
 
 int main()
 {
@@ -17,10 +17,16 @@ int main()
         return quick_imgui_sample();
     }
 
+    //initial window
+    MainGame* game = new MainGame();
+    main_window_start(*game);
+
     //main_window_start();
     //Main loop, temp. Move to MainGame.cpp maybe?
-    MainGame *game = new MainGame();
-    game->Update();
+
+    while (true) {
+        game->Update();
+    }
 
     int x = 5;
 

@@ -10,9 +10,10 @@ class Planet
 
 public:
 	vector<Resource *> resources;
-	int *temperature;
+	int* temperature = new int;
 	void mineResources();
 	vector<Resource*> GetCurrentResources();
-	Planet();
+	string* name = new string;
+	Planet(string nameConstructor);
 };
 

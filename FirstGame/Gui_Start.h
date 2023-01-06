@@ -8,8 +8,9 @@
 #include <d3d12.h>
 #include <dxgi1_4.h>
 #include <tchar.h>
+#include "MainGame.h"
 
-int main_window_start();
+int main_window_start(MainGame &game);
 
 struct FrameContext
 {

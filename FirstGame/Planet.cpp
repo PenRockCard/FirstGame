@@ -3,7 +3,7 @@
 //Constructor.
 //To be made more programatic later.
 
-Planet::Planet() {
+Planet::Planet(string nameConstructor) {
 	/*Resource tempResource = ;*/
 	resources.push_back(new Resource(1, 100, "Bronze"));
 	resources.push_back(new Resource(2, 76, "Iron"));
@@ -11,6 +11,7 @@ Planet::Planet() {
 	resources.push_back(new Resource(4, 40, "Mithril"));
 	resources.push_back(new Resource(5, 30, "Addy"));
 	resources.push_back(new Resource(6, 15, "Rune"));
+	*name = nameConstructor;
 }
 
 void Planet::mineResources()

@@ -2,7 +2,8 @@
 
 
 MainGame::MainGame() {
-	planets.push_back(new Planet());
+	planets.push_back(new Planet("Neptune"));
+	planets.push_back(new Planet("Mars"));
 }
 
 void MainGame::Update() {

@@ -139,6 +139,7 @@
     <ClCompile Include="..\..\TestProject2\TestProject2\imgui_widgets.cpp" />
     <ClCompile Include="FirstGame.cpp" />
     <ClCompile Include="GUI_Start.cpp" />
+    <ClCompile Include="Gui_Test.cpp" />
     <ClCompile Include="imgui_demo_start.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Planet.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="..\..\TestProject2\TestProject2\imstb_textedit.h" />
     <ClInclude Include="..\..\TestProject2\TestProject2\imstb_truetype.h" />
     <ClInclude Include="Gui_Start.h" />
+    <ClInclude Include="Gui_Test.h" />
     <ClInclude Include="imgui_demo_start.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Planet.h" />
