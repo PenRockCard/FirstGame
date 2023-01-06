@@ -15,7 +15,7 @@ class Gui_Test
 {
 
 public:
-	bool show_another_window;
+	bool show_planet_window;
 	Gui_Test();
 	void CreateStuff(MainGame& game);
 };
