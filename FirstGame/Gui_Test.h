@@ -18,5 +18,6 @@ public:
 	bool show_planet_window;
 	Gui_Test();
 	void CreateStuff(MainGame& game);
+	void PopStyleCompact();
 };
 

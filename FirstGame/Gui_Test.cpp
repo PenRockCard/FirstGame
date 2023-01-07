@@ -82,8 +82,34 @@ void Gui_Test::CreateStuff(MainGame &game)
                         ImGui::TextWrapped("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ");
                         ImGui::EndTabItem();
                     }
-                    if (ImGui::BeginTabItem("Details"))
+                    if (ImGui::BeginTabItem("Resources"))
                     {
+                        //table
+                        static ImGuiTableFlags flags = ImGuiTableFlags_SizingStretchSame | ImGuiTableFlags_Resizable | ImGuiTableFlags_BordersOuter | ImGuiTableFlags_BordersV | ImGuiTableFlags_ContextMenuInBody;
+                        PopStyleCompact();
+
+                        if (ImGui::BeginTable("table1", 3, flags)) {
+
+                            for (size_t row = 0; row < game.planets.at(selected)->resources.size(); row++)
+                            {
+                                ImGui::TableNextRow();
+                                for (int column = 0; column < 3; column++)
+                                {
+                                    ImGui::TableSetColumnIndex(column);
+                                    if (column == 0) {
+                                        ImGui::Text((*game.planets.at(selected)->resources.at(row)->name).c_str());
+                                    }
+                                    else if (column == 1) {
+                                        ImGui::Text(to_string(*game.planets.at(selected)->resources.at(row)->amount).c_str());
+                                    }
+                                    else if (column == 2) {
+                                        ImGui::Text(to_string(*game.planets.at(selected)->resources.at(row)->hardness).c_str());
+                                    }
+                                }
+                            }
+                            ImGui::EndTable();
+                        }
+
                         ImGui::Text("ID: 0123456789");
                         ImGui::EndTabItem();
                     }
@@ -104,3 +130,15 @@ void Gui_Test::CreateStuff(MainGame &game)
         }
 
 }
+
+void Gui_Test::PopStyleCompact()
+{
+
+    ImGuiStyle& style = ImGui::GetStyle();
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(style.FramePadding.x, (float)(int)(style.FramePadding.y * 0.60f)));
+    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(style.ItemSpacing.x, (float)(int)(style.ItemSpacing.y * 0.60f)));
+
+    ImGui::PopStyleVar(2);
+}
+
+
