@@ -7,6 +7,7 @@
 using namespace std;
 class MainGame
 {
+	
 public:
 	vector<Planet *> planets;
 	MainGame();

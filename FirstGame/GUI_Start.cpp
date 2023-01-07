@@ -75,7 +75,7 @@ int main_window_start(MainGame &game) {
     auto tempTest = new Gui_Test();
     while (!closeWindow) {
 
-        game.Update();
+        //game.Update();
 
         // Poll and handle messages (inputs, window resize, etc.)
 // See the WndProc() function below for our to dispatch events to the Win32 backend.

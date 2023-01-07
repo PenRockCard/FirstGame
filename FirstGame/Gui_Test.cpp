@@ -11,8 +11,6 @@ Gui_Test::Gui_Test()
 void Gui_Test::CreateStuff(MainGame &game)
 {
 
-
-    cout << *game.planets.at(0)->resources.at(0)->amount << endl;
         ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
         static float f = 0.0f;
         static int counter = 0;
