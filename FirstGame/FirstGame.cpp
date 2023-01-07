@@ -40,12 +40,10 @@ int main()
 }
 
 void GUI_Start() {
-    cout << "here1\n";
     main_window_start(*game);
 }
 
 void Main_Update() {
-    cout << "here2\n";
     while (true) {
         game->Update();
     }

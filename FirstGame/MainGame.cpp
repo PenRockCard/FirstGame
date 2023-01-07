@@ -25,7 +25,8 @@ void MainGame::Update() {
 	auto temp=timeDifference.count();
 
 	//chrono::high_resolution_clock::period
-	chrono::nanoseconds timePeriod = 500000000ns; //0.5 sec
+	//chrono::nanoseconds timePeriod = 16666666ns; // 1/60 sec
+	chrono::nanoseconds timePeriod = 500000000ns; // 0.5 sec
 	this_thread::sleep_for(timePeriod - timeDifference);
 
 }
