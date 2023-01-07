@@ -133,7 +133,7 @@ void Gui_Test::CreateStuff(MainGame &game)
 
 void Gui_Test::PopStyleCompact()
 {
-
+    //Temporary solution, the next 3 lines should end up by themseleves somewhere
     ImGuiStyle& style = ImGui::GetStyle();
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(style.FramePadding.x, (float)(int)(style.FramePadding.y * 0.60f)));
     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(style.ItemSpacing.x, (float)(int)(style.ItemSpacing.y * 0.60f)));
