@@ -129,14 +129,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\TestProject2\TestProject2\imgui.cpp" />
-    <ClCompile Include="..\..\TestProject2\TestProject2\imgui_demo.cpp" />
-    <ClCompile Include="..\..\TestProject2\TestProject2\imgui_draw.cpp" />
-    <ClCompile Include="..\..\TestProject2\TestProject2\imgui_impl_dx12.cpp" />
-    <ClCompile Include="..\..\TestProject2\TestProject2\imgui_impl_dx9.cpp" />
-    <ClCompile Include="..\..\TestProject2\TestProject2\imgui_impl_win32.cpp" />
-    <ClCompile Include="..\..\TestProject2\TestProject2\imgui_tables.cpp" />
-    <ClCompile Include="..\..\TestProject2\TestProject2\imgui_widgets.cpp" />
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_dx12.cpp" />
+    <ClCompile Include="imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="imgui\imgui_tables.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="FirstGame.cpp" />
     <ClCompile Include="GUI_Start.cpp" />
     <ClCompile Include="Gui_Test.cpp" />
@@ -146,15 +145,15 @@
     <ClCompile Include="Resource.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\TestProject2\TestProject2\imconfig.h" />
-    <ClInclude Include="..\..\TestProject2\TestProject2\imgui.h" />
-    <ClInclude Include="..\..\TestProject2\TestProject2\imgui_impl_dx12.h" />
-    <ClInclude Include="..\..\TestProject2\TestProject2\imgui_impl_dx9.h" />
-    <ClInclude Include="..\..\TestProject2\TestProject2\imgui_impl_win32.h" />
-    <ClInclude Include="..\..\TestProject2\TestProject2\imgui_internal.h" />
-    <ClInclude Include="..\..\TestProject2\TestProject2\imstb_rectpack.h" />
-    <ClInclude Include="..\..\TestProject2\TestProject2\imstb_textedit.h" />
-    <ClInclude Include="..\..\TestProject2\TestProject2\imstb_truetype.h" />
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\imgui_impl_dx12.h" />
+    <ClInclude Include="imgui\imgui_impl_dx9.h" />
+    <ClInclude Include="imgui\imgui_impl_win32.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui\imstb_rectpack.h" />
+    <ClInclude Include="imgui\imstb_textedit.h" />
+    <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="Gui_Start.h" />
     <ClInclude Include="Gui_Test.h" />
     <ClInclude Include="imgui_demo_start.h" />
@@ -163,7 +162,7 @@
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\TestProject2\TestProject2\imgui.ini" />
+    <None Include="imgui\imgui.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
