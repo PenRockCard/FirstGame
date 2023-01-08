@@ -43,7 +43,7 @@ bool Update_Time::SetUpdateTime(long long newUpdateTime) {
 }
 
 /*
-Returns the time it actually took to update the game.
+Returns the time (in nanoseconds) it actually took to update the game.
 */
 long long Update_Time::GetUpdateTime() {
 	return updateTotalTime.count();
