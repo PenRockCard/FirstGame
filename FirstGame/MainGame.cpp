@@ -29,4 +29,6 @@ void MainGame::Update() {
 	chrono::nanoseconds timePeriod = 500000000ns; // 0.5 sec
 	this_thread::sleep_for(timePeriod - timeDifference);
 
+	auto testing = chrono::nanoseconds(500);
+
 }

@@ -15,7 +15,8 @@ class Gui_Test
 {
 
 public:
-	bool show_planet_window;
+	bool show_planet_window = false;
+	bool show_UPS_FPS = true;
 	Gui_Test();
 	void CreateStuff(MainGame& game);
 	void PopStyleCompact();
