@@ -143,6 +143,7 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="Update_Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Update_Time.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui\imgui.ini" />

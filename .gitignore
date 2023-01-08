@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/FirstGame/Update_Time2.h
+/FirstGame/Update_Time2.cpp
