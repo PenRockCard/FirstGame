@@ -13,12 +13,13 @@
 
 class Gui_Test
 {
-
+	MainGame game;
 public:
 	bool show_planet_window = false;
 	bool show_UPS_FPS = true;
-	Gui_Test();
-	void CreateStuff(MainGame& game);
+	Gui_Test(MainGame& gameConstruct);
+	void CreateStuff();
 	void PopStyleCompact();
+	void UPSWindow();
 };
 

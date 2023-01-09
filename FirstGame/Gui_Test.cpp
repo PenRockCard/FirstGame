@@ -3,12 +3,13 @@ using namespace std;
 using namespace ImGui;
 #include "MainGame.h"
 
-Gui_Test::Gui_Test()
+Gui_Test::Gui_Test(MainGame& gameConstruct)
 {
 	show_planet_window = false;
+	game = gameConstruct;
 }
 
-void Gui_Test::CreateStuff(MainGame& game)
+void Gui_Test::CreateStuff()
 {
 
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
@@ -43,8 +44,6 @@ void Gui_Test::CreateStuff(MainGame& game)
 		counter++;
 	SameLine();
 	Text("counter = %d", counter);
-
-	Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / GetIO().Framerate, GetIO().Framerate);
 
 	End();
 
@@ -152,6 +151,15 @@ void Gui_Test::CreateStuff(MainGame& game)
 		}
 		
 		if (ImGui::BeginMenu("FPS/UPS Menu")) {
+			/*
+			Ideas for FPS/UPS Window:
+			Not resizable
+			Has an x button
+			Slider for UPS with input that updates based on slider (but will also accept new custom inputs?)
+			Graph showing UPS history?
+			ImGuiSliderFlags_AlwaysClamp
+			Current FPS, from Hello World window
+			*/
 			ImGui::MenuItem("Show Current FPS/UPS", NULL, &show_UPS_FPS);
 			ImGui::EndMenu();
 		}
@@ -159,7 +167,9 @@ void Gui_Test::CreateStuff(MainGame& game)
 		ImGui::EndMainMenuBar();
 
 	}
-
+	if (show_UPS_FPS) {
+		UPSWindow();
+	}
 }
 
 void Gui_Test::PopStyleCompact()
@@ -173,3 +183,18 @@ void Gui_Test::PopStyleCompact()
 }
 
 
+void Gui_Test::UPSWindow() {
+	Begin("Another Window", &show_UPS_FPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+
+	auto temp = game.update_Time.GetUpdateTime();
+	cout << temp << endl;
+
+	string updateTimeString = "The current time to run updates is: " + to_string(game.update_Time.GetUpdateTime());
+	Text(updateTimeString.c_str());
+
+	//Text("Current Update Time: ");
+	Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / GetIO().Framerate, GetIO().Framerate);
+	if (Button("Close Me"))
+		show_UPS_FPS = false;
+	End();
+}

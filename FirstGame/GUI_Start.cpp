@@ -72,7 +72,7 @@ int main_window_start(MainGame &game) {
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     bool closeWindow = false;
-    auto tempTest = new Gui_Test();
+    auto tempTest = new Gui_Test(game);
     while (!closeWindow) {
 
         //game.Update();
@@ -96,7 +96,7 @@ int main_window_start(MainGame &game) {
         NewFrame();
 
 
-        tempTest->CreateStuff(game);
+        tempTest->CreateStuff();
         //Testing this window
         //{
         //    static float f = 0.0f;
@@ -418,3 +418,5 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
     return ::DefWindowProc(hWnd, msg, wParam, lParam);
 }
+
+

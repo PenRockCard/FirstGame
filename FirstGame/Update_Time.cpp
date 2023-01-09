@@ -3,13 +3,14 @@ A class designed to measure, set and get the time it takes to update the game.
 */
 
 #include "Update_Time.h"
+#include <iostream>
 
 /*
 The default constructor. Sets the minimum update time to 0.5 seconds.
 TODO: Add another constructor to set it based on the time input?
 */
 Update_Time::Update_Time() {
-	timePeriod = nanoseconds(500000000);
+	timePeriod = nanoseconds(100000000);
 };
 
 /*
@@ -30,6 +31,7 @@ void Update_Time::UpdateFinish() {
 	auto valueStart = updateStartTime.time_since_epoch();
 	auto valueFinish = updateFinishTime.time_since_epoch();
 	updateTotalTime = valueFinish - valueStart;
+	std::cout << updateTotalTime.count() << endl;
 
 	this_thread::sleep_for(timePeriod - updateTotalTime);
 }
