@@ -73,6 +73,7 @@ int main_window_start(MainGame &game) {
 
     bool closeWindow = false;
     auto tempTest = new Gui_Test(game);
+    auto Gui_Top_Menu_Obj = new Gui_Top_Menu(game);
     while (!closeWindow) {
 
         //game.Update();
@@ -97,6 +98,7 @@ int main_window_start(MainGame &game) {
 
 
         tempTest->CreateStuff();
+        Gui_Top_Menu_Obj->Top_Menu_Bar();
         //Testing this window
         //{
         //    static float f = 0.0f;

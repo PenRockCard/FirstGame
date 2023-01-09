@@ -9,6 +9,7 @@
 #include <dxgi1_4.h>
 #include <tchar.h>
 #include "MainGame.h"
+#include "Gui_Top_Menu.h";
 
 int main_window_start(MainGame &game);
 

@@ -131,84 +131,84 @@ void Gui_Test::CreateStuff()
 
 	//Main/top menu stuff
 
-	if (ImGui::BeginMainMenuBar())
-	{
-		if (ImGui::BeginMenu("File"))
-		{
-			if (ImGui::MenuItem("New", "CTRL+N")) {}
-			if (ImGui::MenuItem("Open", "CTRL+O")) {}
-			if (ImGui::MenuItem("Save", "CTRL+S")) {}
-			ImGui::EndMenu();
-		}
-		if (ImGui::BeginMenu("Edit"))
-		{
-			if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
-			if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
-			ImGui::Separator();
-			if (ImGui::MenuItem("Cut", "CTRL+X")) {}
-			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
-			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
-			ImGui::EndMenu();
-		}
-		
-		if (ImGui::BeginMenu("FPS/UPS Menu")) {
-			/*
-			Ideas for FPS/UPS Window:
-			Not resizable
-			Has an x button
-			Slider for UPS with input that updates based on slider (but will also accept new custom inputs?)
-			Graph showing UPS history?
-			ImGuiSliderFlags_AlwaysClamp
-			Current FPS, from Hello World window
-			*/
-			ImGui::MenuItem("Show Current FPS/UPS", NULL, &show_UPS_FPS);
+	//if (ImGui::BeginMainMenuBar())
+	//{
+	//	if (ImGui::BeginMenu("File"))
+	//	{
+	//		if (ImGui::MenuItem("New", "CTRL+N")) {}
+	//		if (ImGui::MenuItem("Open", "CTRL+O")) {}
+	//		if (ImGui::MenuItem("Save", "CTRL+S")) {}
+	//		ImGui::EndMenu();
+	//	}
+	//	if (ImGui::BeginMenu("Edit"))
+	//	{
+	//		if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
+	//		if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
+	//		ImGui::Separator();
+	//		if (ImGui::MenuItem("Cut", "CTRL+X")) {}
+	//		if (ImGui::MenuItem("Copy", "CTRL+C")) {}
+	//		if (ImGui::MenuItem("Paste", "CTRL+V")) {}
+	//		ImGui::EndMenu();
+	//	}
+	//	
+	//	if (ImGui::BeginMenu("FPS/UPS Menu")) {
+	//		/*
+	//		Ideas for FPS/UPS Window:
+	//		Not resizable
+	//		Has an x button
+	//		Slider for UPS with input that updates based on slider (but will also accept new custom inputs?)
+	//		Graph showing UPS history?
+	//		ImGuiSliderFlags_AlwaysClamp
+	//		Current FPS, from Hello World window
+	//		*/
+	//		ImGui::MenuItem("Show Current FPS/UPS", NULL, &show_UPS_FPS);
 
-			if (ImGui::BeginMenu("Modify UPS"))
-			{
-				//Modify these to call a method in here, as well as making sure they don't change the game object if it's being modified by the update method
-				if (ImGui::MenuItem("1 UPS")) { UpdateUPS(1); }
-				if (ImGui::MenuItem("10 UPS")) { UpdateUPS(10); }
-				if (ImGui::MenuItem("50 UPS")) { UpdateUPS(50); }
-				if (ImGui::MenuItem("60 UPS")) { UpdateUPS(60); }
-				if (ImGui::MenuItem("100 UPS")) { UpdateUPS(100); }
-				if (ImGui::MenuItem("250 UPS")) { UpdateUPS(250); }
-				if (ImGui::MenuItem("500 UPS")) { UpdateUPS(500); }
-				if (ImGui::MenuItem("750 UPS")) { UpdateUPS(750); }
-				if (ImGui::MenuItem("1000 UPS")) { UpdateUPS(1000); }
-				if (ImGui::MenuItem("No Limit")) { UpdateUPS(NULL); }
-				if (ImGui::MenuItem("Custom")) { show_Custom_UPS_Window = true; }
-				ImGui::EndMenu();
-			}
+	//		if (ImGui::BeginMenu("Modify UPS"))
+	//		{
+	//			//Modify these to call a method in here, as well as making sure they don't change the game object if it's being modified by the update method
+	//			if (ImGui::MenuItem("1 UPS")) { UpdateUPS(1); }
+	//			if (ImGui::MenuItem("10 UPS")) { UpdateUPS(10); }
+	//			if (ImGui::MenuItem("50 UPS")) { UpdateUPS(50); }
+	//			if (ImGui::MenuItem("60 UPS")) { UpdateUPS(60); }
+	//			if (ImGui::MenuItem("100 UPS")) { UpdateUPS(100); }
+	//			if (ImGui::MenuItem("250 UPS")) { UpdateUPS(250); }
+	//			if (ImGui::MenuItem("500 UPS")) { UpdateUPS(500); }
+	//			if (ImGui::MenuItem("750 UPS")) { UpdateUPS(750); }
+	//			if (ImGui::MenuItem("1000 UPS")) { UpdateUPS(1000); }
+	//			if (ImGui::MenuItem("No Limit")) { UpdateUPS(NULL); }
+	//			if (ImGui::MenuItem("Custom")) { show_Custom_UPS_Window = true; }
+	//			ImGui::EndMenu();
+	//		}
 
-			ImGui::EndMenu();
-		}
+	//		ImGui::EndMenu();
+	//	}
 
-		ImGui::EndMainMenuBar();
+	//	ImGui::EndMainMenuBar();
 
-	}
-	if (show_UPS_FPS) {
-		UPSWindow();
-	}
+	//}
+	//if (show_UPS_FPS) {
+	//	UPSWindow();
+	//}
 
-	// 3. Show another simple window.
-	if (show_Custom_UPS_Window)
-	{
-		ImGuiWindowFlags window_flags = ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings;
-		ImGui::Begin("Custom UPS", &show_Custom_UPS_Window, window_flags);
-		ImGui::Text("Enter new UPS: ");
-		static char buf2[64] = ""; ImGui::InputText("##", buf2, 64, ImGuiInputTextFlags_CharsDecimal);
+	//// 3. Show another simple window.
+	//if (show_Custom_UPS_Window)
+	//{
+	//	ImGuiWindowFlags window_flags = ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings;
+	//	ImGui::Begin("Custom UPS", &show_Custom_UPS_Window, window_flags);
+	//	ImGui::Text("Enter new UPS: ");
+	//	static char buf2[64] = ""; ImGui::InputText("##", buf2, 64, ImGuiInputTextFlags_CharsDecimal);
 
-		//Checks if the enter key is pressed.
-		if ((ImGui::IsKeyDown(ImGuiKey_Enter)|| ImGui::IsKeyDown(ImGuiKey_KeypadEnter)) && buf2!="") {
-			UpdateUPS(atoi(buf2));
-			show_Custom_UPS_Window = false;
-		}
-		if (ImGui::Button("Update")) { 
-			UpdateUPS(atoi(buf2));
-			show_Custom_UPS_Window = false;
-		}
-		ImGui::End();
-	}
+	//	//Checks if the enter key is pressed.
+	//	if ((ImGui::IsKeyDown(ImGuiKey_Enter)|| ImGui::IsKeyDown(ImGuiKey_KeypadEnter)) && buf2!="") {
+	//		UpdateUPS(atoi(buf2));
+	//		show_Custom_UPS_Window = false;
+	//	}
+	//	if (ImGui::Button("Update")) { 
+	//		UpdateUPS(atoi(buf2));
+	//		show_Custom_UPS_Window = false;
+	//	}
+	//	ImGui::End();
+	//}
 }
 
 void Gui_Test::UpdateUPS(int UPSTime) {
