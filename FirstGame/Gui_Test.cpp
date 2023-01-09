@@ -161,6 +161,24 @@ void Gui_Test::CreateStuff()
 			Current FPS, from Hello World window
 			*/
 			ImGui::MenuItem("Show Current FPS/UPS", NULL, &show_UPS_FPS);
+
+			if (ImGui::BeginMenu("Modify UPS"))
+			{
+				//Modify these to call a method in here, as well as making sure they don't change the game object if it's being modified by the update method
+				if (ImGui::MenuItem("1 UPS")) { game.updateTime->SetUpdateTime(1e9 / 1); }
+				if (ImGui::MenuItem("10 UPS")) { game.updateTime->SetUpdateTime(1e9 / 10); }
+				if (ImGui::MenuItem("50 UPS")) { game.updateTime->SetUpdateTime(1e9 / 50); }
+				if (ImGui::MenuItem("60 UPS")) { game.updateTime->SetUpdateTime(1e9 / 60); }
+				if (ImGui::MenuItem("100 UPS")) { game.updateTime->SetUpdateTime(1e9 / 100); }
+				if (ImGui::MenuItem("250 UPS")) { game.updateTime->SetUpdateTime(1e9 / 250); }
+				if (ImGui::MenuItem("500 UPS")) { game.updateTime->SetUpdateTime(1e9 / 500); }
+				if (ImGui::MenuItem("750 UPS")) { game.updateTime->SetUpdateTime(1e9 / 750); }
+				if (ImGui::MenuItem("1000 UPS")) { game.updateTime->SetUpdateTime(1e9 / 1000); }
+				if (ImGui::MenuItem("No Limit")) {} //TODO: Implement
+				if (ImGui::MenuItem("Custom")) {} //TODO: Implement
+				ImGui::EndMenu();
+			}
+
 			ImGui::EndMenu();
 		}
 
@@ -174,7 +192,7 @@ void Gui_Test::CreateStuff()
 
 void Gui_Test::PopStyleCompact()
 {
-	//Temporary solution, the next 3 lines should end up by themseleves somewhere
+	//Temporary solution, the next 3 lines should end up by themselves somewhere
 	ImGuiStyle& style = ImGui::GetStyle();
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(style.FramePadding.x, (float)(int)(style.FramePadding.y * 0.60f)));
 	ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(style.ItemSpacing.x, (float)(int)(style.ItemSpacing.y * 0.60f)));
@@ -182,23 +200,31 @@ void Gui_Test::PopStyleCompact()
 	ImGui::PopStyleVar(2);
 }
 
-
 void Gui_Test::UPSWindow() {
 
-	//Make it collapsable? Currently it's not.
-	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse;
+	ImGuiWindowFlags window_flags= ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoMove;
 
-	Begin("FPS/UPS Overview", &show_UPS_FPS, window_flags);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+	ImGui::SetNextWindowBgAlpha(0.35f); // Transparent background
 
-	//string updateTimeString = "The current time to run updates is: " + to_string(game.update_Time->GetActualUpdateTime());
-	//Text(updateTimeString.c_str());
+	//Sets the location
+	const float PAD = 10.0f;
+	const ImGuiViewport* viewport = ImGui::GetMainViewport();
+	ImVec2 work_pos = viewport->WorkPos; // Use work area to avoid menu-bar/task-bar, if any!
+	ImVec2 work_size = viewport->WorkSize;
+	ImVec2 window_pos, window_pos_pivot;
+	window_pos.x = work_pos.x + work_size.x - PAD;
+	window_pos.y = work_pos.y + PAD;
+	window_pos_pivot.x = 1.0f;
+	window_pos_pivot.y = 0.0f;
+	ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always, window_pos_pivot);
+
+	Begin("FPS/UPS Overview", &show_UPS_FPS, window_flags);
 
 	string UPSString = "UPS: " + to_string(1e9 / (game.updateTime->GetUpdateTime()))+ ". Updates happen in: "+ to_string(game.updateTime->GetActualUpdateTime())+"ns";
 	//Normally for UPS, it'd update time/second, but this only works this way (as this is the time for one update to happen).
 	Text(UPSString.c_str());
 
-	//Text("Current Update Time: ");
 	Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / GetIO().Framerate, GetIO().Framerate);
-	Text("Testing");
+
 	End();
 }
