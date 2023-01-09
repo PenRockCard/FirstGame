@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game_Overview.cpp" />
     <ClCompile Include="Gui_Top_Menu.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="UpdateTime.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game_Overview.h" />
     <ClInclude Include="Gui_Top_Menu.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />

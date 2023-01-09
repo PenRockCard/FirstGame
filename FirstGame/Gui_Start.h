@@ -10,6 +10,7 @@
 #include <tchar.h>
 #include "MainGame.h"
 #include "Gui_Top_Menu.h";
+#include "Game_Overview.h";
 
 int main_window_start(MainGame &game);
 
