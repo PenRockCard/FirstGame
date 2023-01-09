@@ -23,5 +23,7 @@ public:
 	void PopStyleCompact();
 	void UPSWindow();
 	void UpdateUPS(int UPSTime);
+	vector<long long> RecentUPS;
+	short vectorLocation = 0;
 };
 

@@ -7,6 +7,7 @@ Gui_Test::Gui_Test(MainGame& gameConstruct)
 {
 	show_planet_window = false;
 	game = gameConstruct;
+	RecentUPS.resize(100);
 }
 
 void Gui_Test::CreateStuff()
@@ -249,10 +250,31 @@ void Gui_Test::UPSWindow() {
 	ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always, window_pos_pivot);
 
 	Begin("FPS/UPS Overview", &show_UPS_FPS, window_flags);
+	
+	//vector<long long>::iterator it;
+	//it = RecentUPS.begin();
+	//RecentUPS.erase(500);
+	RecentUPS.at(vectorLocation) = game.updateTime->GetUpdateTime();
 
-	string UPSString = "UPS: " + to_string(1e9 / (game.updateTime->GetUpdateTime()))+ ". Updates happen in: "+ to_string(game.updateTime->GetActualUpdateTime())+"ns";
+	if (vectorLocation != 99) {
+		vectorLocation++;		
+	} else {
+		vectorLocation = 0;
+	}
+
+	long long averageValue = 0;
+	for (int i = 0; i < RecentUPS.size(); i++) {
+		averageValue += RecentUPS.at(i);
+	}
+	float averageValueFloat = averageValue / ((float)RecentUPS.size());
+
+	string UPSString = "UPS Ave: " + to_string(1e9 / averageValueFloat)+ ". Updates happen in: "+ to_string(game.updateTime->GetActualUpdateTime())+"ns";
+	string UPSString2 = "UPS: " + to_string(1e9 / game.updateTime->GetUpdateTime()) + ". Updates happen in: " + to_string(game.updateTime->GetActualUpdateTime()) + "ns";
+
+
 	//Normally for UPS, it'd update time/second, but this only works this way (as this is the time for one update to happen).
 	Text(UPSString.c_str());
+	Text(UPSString2.c_str());
 
 	Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / GetIO().Framerate, GetIO().Framerate);
 
