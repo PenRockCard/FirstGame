@@ -184,7 +184,11 @@ void Gui_Test::PopStyleCompact()
 
 
 void Gui_Test::UPSWindow() {
-	Begin("FPS/UPS Overview", &show_UPS_FPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+
+	//Make it collapsable? Currently it's not.
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse;
+
+	Begin("FPS/UPS Overview", &show_UPS_FPS, window_flags);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 
 	//string updateTimeString = "The current time to run updates is: " + to_string(game.update_Time->GetActualUpdateTime());
 	//Text(updateTimeString.c_str());
@@ -195,5 +199,6 @@ void Gui_Test::UPSWindow() {
 
 	//Text("Current Update Time: ");
 	Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / GetIO().Framerate, GetIO().Framerate);
+	Text("Testing");
 	End();
 }
