@@ -19,6 +19,9 @@ class UpdateTime
 	//How long it took to update the game
 	nanoseconds updateTotalTime;
 
+	//How long it took to update the game including the delay
+	nanoseconds updateOverallTime;
+
 public:
 	UpdateTime();
 	void UpdateStart();

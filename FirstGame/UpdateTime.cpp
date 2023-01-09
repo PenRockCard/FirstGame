@@ -25,6 +25,8 @@ Then it'll sleep the thread long enough to meet the minimum update time.
 TODO: Figure out what to do when the update time is shorter than the time it took to update the game?
 */
 void UpdateTime::UpdateFinish() {
+
+
 	updateFinishTime = high_resolution_clock::now();
 
 	auto valueStart = updateStartTime.time_since_epoch();
@@ -32,6 +34,10 @@ void UpdateTime::UpdateFinish() {
 	updateTotalTime = valueFinish - valueStart;
 
 	this_thread::sleep_for(timePeriod - updateTotalTime);
+
+	auto finalFinish = high_resolution_clock::now();
+	updateOverallTime= finalFinish.time_since_epoch() - valueStart;
+	
 }
 
 /*
@@ -56,5 +62,5 @@ long long UpdateTime::GetActualUpdateTime() {
 }
 
 long long UpdateTime::GetUpdateTime() {
-	return timePeriod.count();
+	return updateOverallTime.count();
 }
