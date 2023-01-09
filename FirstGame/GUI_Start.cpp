@@ -100,38 +100,6 @@ int main_window_start(MainGame &game) {
 
         Gui_Top_Menu_Obj->Top_Menu_Bar();
         gameOverview->CreateOverviewWindow();
-        //Testing this window
-        //{
-        //    static float f = 0.0f;
-        //    static int counter = 0;
-
-        //    Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-
-        //    Text("This is some useful text.");               // Display some text (you can use a format strings too)
-        //    //Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-        //    Checkbox("Another Window", &show_another_window);
-
-        //    SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-        //    ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-        //    if (Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-        //        counter++;
-        //    SameLine();
-        //    Text("counter = %d", counter);
-
-        //    Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / GetIO().Framerate, GetIO().Framerate);
-        //    End();
-        //}
-
-        //// 3. Show another simple window.
-        //if (show_another_window)
-        //{
-        //    Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-        //    Text("Hello from another window!");
-        //    if (Button("Close Me"))
-        //        show_another_window = false;
-        //    End();
-        //}
 
         // Rendering
         Render();
