@@ -184,17 +184,16 @@ void Gui_Test::PopStyleCompact()
 
 
 void Gui_Test::UPSWindow() {
-	Begin("Another Window", &show_UPS_FPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+	Begin("FPS/UPS Overview", &show_UPS_FPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 
-	auto temp = game.update_Time.GetUpdateTime();
-	cout << temp << endl;
+	//string updateTimeString = "The current time to run updates is: " + to_string(game.update_Time->GetActualUpdateTime());
+	//Text(updateTimeString.c_str());
 
-	string updateTimeString = "The current time to run updates is: " + to_string(game.update_Time.GetUpdateTime());
-	Text(updateTimeString.c_str());
+	string UPSString = "UPS: " + to_string(1e9 / (game.update_Time->GetUpdateTime()))+ ". Updates happen in: "+ to_string(game.update_Time->GetActualUpdateTime())+"ns";
+	//Normally for UPS, it'd update time/second, but this only works this way (as this is the time for one update to happen).
+	Text(UPSString.c_str());
 
 	//Text("Current Update Time: ");
 	Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / GetIO().Framerate, GetIO().Framerate);
-	if (Button("Close Me"))
-		show_UPS_FPS = false;
 	End();
 }

@@ -25,6 +25,7 @@ public:
 	void UpdateFinish();
 	bool SetUpdateTime(long long newUpdateTime);
 	long long GetUpdateTime();
+	long long GetActualUpdateTime();	
 
 };
 

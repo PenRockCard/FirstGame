@@ -13,7 +13,7 @@ public:
 	vector<Planet *> planets;
 	MainGame();
 	void Update();
-	Update_Time update_Time;
+	Update_Time *update_Time = new Update_Time();
 
 };
 
