@@ -5,7 +5,7 @@
 using namespace std;
 using namespace chrono;
 
-class Update_Time
+class UpdateTime
 {
 	//The current minimum update time.
 	chrono::nanoseconds timePeriod; 
@@ -20,7 +20,7 @@ class Update_Time
 	nanoseconds updateTotalTime;
 
 public:
-	Update_Time();
+	UpdateTime();
 	void UpdateStart();
 	void UpdateFinish();
 	bool SetUpdateTime(long long newUpdateTime);

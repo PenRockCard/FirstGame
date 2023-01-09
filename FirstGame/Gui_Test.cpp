@@ -189,7 +189,7 @@ void Gui_Test::UPSWindow() {
 	//string updateTimeString = "The current time to run updates is: " + to_string(game.update_Time->GetActualUpdateTime());
 	//Text(updateTimeString.c_str());
 
-	string UPSString = "UPS: " + to_string(1e9 / (game.update_Time->GetUpdateTime()))+ ". Updates happen in: "+ to_string(game.update_Time->GetActualUpdateTime())+"ns";
+	string UPSString = "UPS: " + to_string(1e9 / (game.updateTime->GetUpdateTime()))+ ". Updates happen in: "+ to_string(game.updateTime->GetActualUpdateTime())+"ns";
 	//Normally for UPS, it'd update time/second, but this only works this way (as this is the time for one update to happen).
 	Text(UPSString.c_str());
 

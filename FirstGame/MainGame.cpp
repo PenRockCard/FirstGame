@@ -4,17 +4,17 @@
 MainGame::MainGame() {
 	planets.push_back(new Planet("Neptune"));
 	planets.push_back(new Planet("Mars"));
-	update_Time=new Update_Time();
+	updateTime=new UpdateTime();
 }
 
 void MainGame::Update() {
 
-	update_Time->UpdateStart();
+	updateTime->UpdateStart();
 
 	for (Planet* planet : planets) {
 		planet->mineResources();
 	}
 
-	update_Time->UpdateFinish();
+	updateTime->UpdateFinish();
 
 }
