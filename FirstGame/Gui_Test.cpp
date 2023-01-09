@@ -175,7 +175,7 @@ void Gui_Test::CreateStuff()
 				if (ImGui::MenuItem("750 UPS")) { UpdateUPS(750); }
 				if (ImGui::MenuItem("1000 UPS")) { UpdateUPS(1000); }
 				if (ImGui::MenuItem("No Limit")) { UpdateUPS(NULL); }
-				if (ImGui::MenuItem("Custom")) { show_Custom_UPS_Window = true; } //TODO: Implement
+				if (ImGui::MenuItem("Custom")) { show_Custom_UPS_Window = true; }
 				ImGui::EndMenu();
 			}
 
