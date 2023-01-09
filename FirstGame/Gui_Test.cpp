@@ -165,17 +165,17 @@ void Gui_Test::CreateStuff()
 			if (ImGui::BeginMenu("Modify UPS"))
 			{
 				//Modify these to call a method in here, as well as making sure they don't change the game object if it's being modified by the update method
-				if (ImGui::MenuItem("1 UPS")) { game.updateTime->SetUpdateTime(1e9 / 1); }
-				if (ImGui::MenuItem("10 UPS")) { game.updateTime->SetUpdateTime(1e9 / 10); }
-				if (ImGui::MenuItem("50 UPS")) { game.updateTime->SetUpdateTime(1e9 / 50); }
-				if (ImGui::MenuItem("60 UPS")) { game.updateTime->SetUpdateTime(1e9 / 60); }
-				if (ImGui::MenuItem("100 UPS")) { game.updateTime->SetUpdateTime(1e9 / 100); }
-				if (ImGui::MenuItem("250 UPS")) { game.updateTime->SetUpdateTime(1e9 / 250); }
-				if (ImGui::MenuItem("500 UPS")) { game.updateTime->SetUpdateTime(1e9 / 500); }
-				if (ImGui::MenuItem("750 UPS")) { game.updateTime->SetUpdateTime(1e9 / 750); }
-				if (ImGui::MenuItem("1000 UPS")) { game.updateTime->SetUpdateTime(1e9 / 1000); }
-				if (ImGui::MenuItem("No Limit")) {} //TODO: Implement
-				if (ImGui::MenuItem("Custom")) {} //TODO: Implement
+				if (ImGui::MenuItem("1 UPS")) { UpdateUPS(1); }
+				if (ImGui::MenuItem("10 UPS")) { UpdateUPS(10); }
+				if (ImGui::MenuItem("50 UPS")) { UpdateUPS(50); }
+				if (ImGui::MenuItem("60 UPS")) { UpdateUPS(60); }
+				if (ImGui::MenuItem("100 UPS")) { UpdateUPS(100); }
+				if (ImGui::MenuItem("250 UPS")) { UpdateUPS(250); }
+				if (ImGui::MenuItem("500 UPS")) { UpdateUPS(500); }
+				if (ImGui::MenuItem("750 UPS")) { UpdateUPS(750); }
+				if (ImGui::MenuItem("1000 UPS")) { UpdateUPS(1000); }
+				if (ImGui::MenuItem("No Limit")) { UpdateUPS(NULL); }
+				if (ImGui::MenuItem("Custom")) { show_Custom_UPS_Window = true; } //TODO: Implement
 				ImGui::EndMenu();
 			}
 
@@ -188,7 +188,37 @@ void Gui_Test::CreateStuff()
 	if (show_UPS_FPS) {
 		UPSWindow();
 	}
+
+	// 3. Show another simple window.
+	if (show_Custom_UPS_Window)
+	{
+		ImGuiWindowFlags window_flags = ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings;
+		ImGui::Begin("Custom UPS", &show_Custom_UPS_Window, window_flags);
+		ImGui::Text("Enter new UPS: ");
+		static char buf2[64] = ""; ImGui::InputText("##", buf2, 64, ImGuiInputTextFlags_CharsDecimal);
+
+		//Checks if the enter key is pressed.
+		if ((ImGui::IsKeyDown(ImGuiKey_Enter)|| ImGui::IsKeyDown(ImGuiKey_KeypadEnter)) && buf2!="") {
+			UpdateUPS(atoi(buf2));
+			show_Custom_UPS_Window = false;
+		}
+		if (ImGui::Button("Update")) { 
+			UpdateUPS(atoi(buf2));
+			show_Custom_UPS_Window = false;
+		}
+		ImGui::End();
+	}
 }
+
+void Gui_Test::UpdateUPS(int UPSTime) {
+	if (UPSTime == NULL) {
+		game.updateTime->SetUpdateTime(NULL);
+	}
+	else {
+		game.updateTime->SetUpdateTime(1e9 / UPSTime);
+	}
+}
+
 
 void Gui_Test::PopStyleCompact()
 {
@@ -228,3 +258,4 @@ void Gui_Test::UPSWindow() {
 
 	End();
 }
+

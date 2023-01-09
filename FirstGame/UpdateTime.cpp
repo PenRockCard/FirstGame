@@ -36,9 +36,15 @@ void UpdateTime::UpdateFinish() {
 
 /*
 Sets the minimum update time.
+If null is entered, it means there is not min time, it'll go as fast as possible.
 */
 bool UpdateTime::SetUpdateTime(long long newUpdateTime) {
-	timePeriod = nanoseconds(newUpdateTime);
+	if (newUpdateTime == NULL) {
+		timePeriod = nanoseconds(0);
+	}
+	else {
+		timePeriod = nanoseconds(newUpdateTime);
+	}
 	return true;
 }
 

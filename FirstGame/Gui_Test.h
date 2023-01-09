@@ -17,9 +17,11 @@ class Gui_Test
 public:
 	bool show_planet_window = false;
 	bool show_UPS_FPS = true;
+	bool show_Custom_UPS_Window = false;
 	Gui_Test(MainGame& gameConstruct);
 	void CreateStuff();
 	void PopStyleCompact();
 	void UPSWindow();
+	void UpdateUPS(int UPSTime);
 };
 
