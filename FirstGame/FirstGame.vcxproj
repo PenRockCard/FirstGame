@@ -144,6 +144,7 @@
     <ClCompile Include="imgui_demo_start.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Planet.cpp" />
+    <ClCompile Include="Planet_Overview.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="UpdateTime.cpp" />
   </ItemGroup>
@@ -164,6 +165,7 @@
     <ClInclude Include="imgui_demo_start.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Planet.h" />
+    <ClInclude Include="Planet_Overview.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="UpdateTime.h" />
   </ItemGroup>

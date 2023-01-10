@@ -12,7 +12,7 @@ Game_Overview::Game_Overview(MainGame& gameConstruct) {
 void Game_Overview::CreateOverviewWindow() {
 
 
-	Begin("Planet Overview");
+	Begin("Game Overview");
 
 	//Number of planets
 	string tempString2 = "The number of planets is: " + to_string(game.planets.size());
@@ -28,5 +28,8 @@ void Game_Overview::CreateOverviewWindow() {
 
 	End();
 
-	if (show_planet_window) { }
+	if (show_planet_window) { 
+		Planet_Overview planetOverview = Planet_Overview(game);
+		planetOverview.Planet_Window_Main();
+	}
 }
