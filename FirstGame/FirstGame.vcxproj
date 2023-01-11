@@ -140,7 +140,6 @@
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="FirstGame.cpp" />
     <ClCompile Include="GUI_Start.cpp" />
-    <ClCompile Include="Gui_Test.cpp" />
     <ClCompile Include="imgui_demo_start.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Planet.cpp" />
@@ -161,7 +160,6 @@
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="Gui_Start.h" />
-    <ClInclude Include="Gui_Test.h" />
     <ClInclude Include="imgui_demo_start.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Planet.h" />

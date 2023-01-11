@@ -21,7 +21,6 @@ using namespace std;
 #endif
 
 #include "Gui_Start.h"
-#include "Gui_Test.h"
 #include "MainGame.h"
 using namespace ImGui;
 
@@ -72,7 +71,6 @@ int main_window_start(MainGame &game) {
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     bool closeWindow = false;
-    auto tempTest = new Gui_Test(game);
     auto Gui_Top_Menu_Obj = new Gui_Top_Menu(game);
     auto gameOverview = new Game_Overview(game);
     while (!closeWindow) {
