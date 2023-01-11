@@ -25,7 +25,7 @@ using namespace std;
 using namespace ImGui;
 
 
-int main_window_start(MainGame &game) {
+int main_window_start(MainGame &gameIn) {
 
     cout << "Start of main window\n";
 
@@ -70,9 +70,9 @@ int main_window_start(MainGame &game) {
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
+    GUI::game = gameIn;
     bool closeWindow = false;
-    auto Gui_Top_Menu_Obj = new Gui_Top_Menu(game);
-    auto gameOverview = new Game_Overview(game);
+    auto Gui_Top_Menu_Obj = new Gui_Top_Menu(gameIn);
     while (!closeWindow) {
 
         //game.Update();
@@ -97,7 +97,7 @@ int main_window_start(MainGame &game) {
 
 
         Gui_Top_Menu_Obj->Top_Menu_Bar();
-        gameOverview->CreateOverviewWindow();
+        GUI::CreateOverviewWindow();
 
         // Rendering
         Render();

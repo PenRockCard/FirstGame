@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <compare>
 #include <vector>
@@ -11,6 +12,7 @@
 #include "MainGame.h"
 #include "Gui_Top_Menu.h";
 #include "Game_Overview.h";
+#include "GuiNamespace.h"
 
 int main_window_start(MainGame &game);
 

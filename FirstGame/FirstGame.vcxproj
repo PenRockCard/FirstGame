@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game_Overview.cpp" />
+    <ClCompile Include="GuiNamespace.h" />
     <ClCompile Include="Gui_Top_Menu.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />

@@ -1,15 +1,34 @@
-#include "Game_Overview.h"
+#pragma once
+#include <iostream>
+#include <compare>
+#include <vector>
+
+#include "imgui\imgui.h"
+#include "imgui\imgui_impl_win32.h"
+#include "imgui\imgui_impl_dx12.h"
+#include <d3d12.h>
+#include <dxgi1_4.h>
+#include <tchar.h>
+
+#include "GuiNamespace.h"
+#include "Planet_Overview.h"
+#include "MainGame.h"
+
+
+
 using namespace std;
 using namespace ImGui;
+using namespace GUI;
 
-Game_Overview::Game_Overview(MainGame& gameConstruct) {
 
-	show_planet_window = false;
-	game = gameConstruct;
+//Game_Overview::Game_Overview(MainGame& gameConstruct) {
+//
+//	show_planet_window = false;
+//	game = gameConstruct;
+//
+//}
 
-}
-
-void Game_Overview::CreateOverviewWindow() {
+void GUI::CreateOverviewWindow() {
 
 
 	Begin("Game Overview");
@@ -28,7 +47,7 @@ void Game_Overview::CreateOverviewWindow() {
 
 	End();
 
-	if (show_planet_window) { 
+	if (show_planet_window) {
 		Planet_Overview planetOverview = Planet_Overview(game);
 		planetOverview.Planet_Window_Main();
 	}
